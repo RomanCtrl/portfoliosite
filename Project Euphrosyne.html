@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Project Euphrosyne</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="landing is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="Project Euphrosyne.html">Project Euphrosyne</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="index.html">Home</a></li>
+											<li><a href="Project Euphrosyne.html">Project Euphrosyne</a></li>
+											<li><a href="Project Bia.html">Project Bia</a></li>
+											<li><a href="Project Plutus.html">Project Plutus</a></li>	
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<article id="main">
+						<header>
+							<h2>Project Euphrosyne</h2>
+							<p>"A question of Happiness"</p>
+						</header>
+						<section class="wrapper style5">
+							<div class="inner">
+
+								<h3>Introduction</h3>
+								<p>Inflation is a common economic phenomenon that affects people's lives in numerous ways. It has been linked to changes in the cost of living, purchasing power, and employment rates. At the same time, happiness is a crucial indicator of human well-being and is affected by various socio-economic factors. In this data analysis project, we aim to explore the relationship between inflation and happiness levels across different countries over time. By analyzing inflation data from various sources and comparing it with happiness metrics, we hope to gain insights into the impact of inflation on people's well-being. This analysis may shed light on the role of economic stability in promoting happiness and provide policymakers with valuable information for designing effective economic policies.</p>
+
+								<p>The Inflation and Happiness data sets were pulled directly from publicly available Kaggle data sets. </p>
+								<p>Here is a preview of the Happiness Data CSV for the year 2015: </p>
+								<span class="image fit"><img src="images/PE/PE0.png" alt="" /></span>
+								<p>And here is a preview of the inflation data set: </p>
+								<span class="image fit"><img src="images/PE/PE01.png" alt="" /></span>
+
+								<hr />
+
+								<h4>Data Cleaning</h4>
+								<p>Before any cleaning can be done we must first procced with an inital analysis of the base data sets to better understand what each columns represents and what data available we have. Once that is done we can select only the pertinent data for this analysis. This helps too reduce the costs of data treatment and helps to focus on the important information.</p>
+								<p>Here I will run you through my Python code that I used for this data cleaning:</p>
+								<span class="image fit"><img src="images/PE/PE2.png" alt="" /></span>
+								<span class="image fit"><img src="images/PE/PE3.png" alt="" /></span>
+								<P>Once we have selected the pertinent columns in each data set we will merge them all into a single table. This requires more cleaning to make sure all columns have the correct naming to be able to identify a primary key for merging:</P>
+								<span class="image fit"><img src="images/PE/PE4.png" alt="" /></span>
+								<span class="image fit"><img src="images/PE/PE5.png" alt="" /></span>
+								<span class="image fit"><img src="images/PE/PE6.png" alt="" /></span>
+								<p>Now that we have all the data in a single table we can export this data into a new CSV file:</p>
+								<span class="image fit"><img src="images/PE/PE7.png" alt="" /></span>
+								And here is what this new clean data looks like:
+								<span class="image fit"><img src="images/PE/PE8.png" alt="" /></span>
+							
+								<hr />
+
+								<h4>Analysis</h4>
+								<p>From this cleaned data we can now procceed to some inital analysis in Python:</p>
+								<span class="image fit"><img src="images/PE/PE9.png" alt="" /></span>
+								<p>A correlation result is a numerical value between -1 and 1 : 1 being correltated, -1 being opposite and 0 being unrelated. From these results we can already see that this inflation and happiness data seem to not be very correlated as all results are near 0.</p>
+								<p>A good practice is to never jump to conclusions and to analyse data visualy. So from this same data set we will build a dashboard to verify this first result.</p>
+								<p>Here is a global view of our dashboard:</p>
+								<span class="image fit"><img src="images/PE/PEvis.png" alt="" /></span>
+								<p>On the left side we have a bar vs line graph that shows us both the evolution of inflation % and happiness score by year. On the right we have 2 maps the show us the inflation and happiness data by country. Now the left graph is unreadable because of the quantity of information but it was made to adapt the user selected filter of country.</p>
+								<p>Here is the same dashboard with a single country selected:</p>
+								<span class="image fit"><img src="images/PE/PEvis2.png" alt="" /></span>
+								<p>In this view we can better understand the first graph. The point of this dashboard here is to be able to quickly identify countries with high inflation or high happiness scores and compare them.</p>
+								<P>And here is the dashboard for you to use freely:</P>
+								<div class='tableauPlaceholder' id='viz1679998604598' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;te&#47;test1_16771980762020&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='test1_16771980762020&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;te&#47;test1_16771980762020&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1679998604598');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='1920px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='1107px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='1920px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='1107px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='1177px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+								<hr />
+
+								<h4>Conclusion</h4>
+								<p>From the data that was available to us we cannot conclude any direct correlation between inflation and happiness. Yet this does not necessarily mean that inflation and happiness are not correlated, this just shows us the limits of the data that we had available here. Maybe the sample size of years was not enough. More factors can be closely examined in future research to gain a better understanding of the complex relationship between economics and human well-being. By identifying the key drivers of happiness, policymakers can design more effective strategies for promoting economic growth and improving the overall quality of life for their citizens. </p>								
+
+							</div>
+						</section>
+					</article>
+
+					<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon solid fa-user"><span class="label">Malt</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Roman CHANDET</li>
+						</ul>
+					</footer>
+
+			</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

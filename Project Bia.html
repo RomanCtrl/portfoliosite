@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Project Bia</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="landing is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="Project Bia.html">Project Bia</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="index.html">Home</a></li>
+											<li><a href="Project Euphrosyne.html">Project Euphrosyne</a></li>
+											<li><a href="Project Bia.html">Project Bia</a></li>
+											<li><a href="Project Plutus.html">Project Plutus</a></li>	
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<article id="main">
+						<header>
+							<h2>Project Bia</h2>
+							<p>"Without energy, nothing can exist."</p>
+						</header>
+						<section class="wrapper style5">
+							<div class="inner">
+
+								<h3>Introduction</h3>
+								<p>Energy consumption is a critical aspect of modern society, as it is the basis of economic growth, transportation, and daily life activities. With the global population increasing and energy demands rising, it is essential to understand how energy consumption patterns are evolving.
+                                    In this data analysis project, we aim to explore energy consumption trends by pulling data from PJM Interconnection LLC. The hourly power consumption data comes from PJM's website and are in megawatts (MW).
+                                </p>
+								<p>Here is a preview of the CSV: </p>
+								<span class="image fit"><img src="images/PB/PB00.png" alt="" /></span>
+								
+								<hr />
+
+								<h4>Data Cleaning</h4>
+								<p>Before any cleaning can be done we must first procced with an inital analysis of the base data sets to better understand what each columns represents and what data available we have. Once that is done we can select only the pertinent data for this analysis. This helps too reduce the costs of data treatment and helps to focus on the important information.</p>
+								<p>Here the data set is simple and does not require cleaning, it is composed of only 2 columns: the date-time and the power consumtion in MW.</p>
+
+								<hr />
+
+								<h4>Analysis</h4>
+								<p>For this analysis we will be using multiple Python librairies and the Prophet model for machine learning:</p>
+								<span class="image fit"><img src="images/PB/PB0.png" alt="" /></span>
+								<p>The first few lines import the required libraries: NumPy, Pandas, Seaborn, Matplotlib, and Prophet. A custom function called mean_absolute_percentage_error is defined to calculate the mean absolute percentage error between the true and predicted values. We will be using this function at the end to verify our machine learning results.</p>
+                                <span class="image fit"><img src="images/PB/PB1.png" alt="" /></span>
+								<p>Here we create a line plot of the energy consumption over time from the dataframe to see if we can identify a visible pattern or not.</p>
+								<p>We can confirm a visible pattern but we would like to be able to visualize the information more in depth. We will now procceed to create a new categorical data type using the CategoricalDtype class from Pandas. The create_features function is defined to extract time-series features from the data, such as hour of the day, day of the week, and month of the year. These features are then used to create a new DataFrame X that will be used to train the model.</p>
+								<span class="image fit"><img src="images/PB/PB2.png" alt="" /></span>
+								<p>We will now plot this new data to visualize patterns by day of the week and by seasons:</p>
+                                <span class="image fit"><img src="images/PB/PB3.png" alt="" /></span>
+								<P>Now all thats left to do is prepare and train a machine learning model on this data to be able to recognize the patterns and make predictions.</P>
+								
+								<hr />
+
+                                <h4>Machine Learning</h4>
+                                <p>First we must prepare the data for training and testing, we will now seperate our data into these 2 groups:</p>
+                                <span class="image fit"><img src="images/PB/PB4.png" alt="" /></span>
+                                <p>Now we will prepare the data to be used with the Prophet model and train it:</p>
+                                <span class="image fit"><img src="images/PB/PB5.png" alt="" /></span>
+                                <p>Once we have a trained model we can now use it on our data to make forcasts:</p>
+                                <span class="image fit"><img src="images/PB/PB6.png" alt="" /></span>
+                                <p>We can now plot this data to see if the model recognized any trends:</p>
+                                <span class="image fit"><img src="images/PB/PB7.png" alt="" /></span>
+                                <span class="image fit"><img src="images/PB/PB8.png" alt="" /></span>
+                                <p>Finaly, we will compare our models forcasts vs the actual data(In red is the actual and in blue the forcasts):</p>
+                                <span class="image fit"><img src="images/PB/PB9.png" alt="" /></span>
+                                <p>To get a numerical value on our models precision we will now use our custom function:</p>
+                                <span class="image fit"><img src="images/PB/PB10.png" alt="" /></span>
+                                <p>This code calculates three different evaluation metrics for a time series forecasting model:<br/>
+                                    <br/>
+                                    The first line uses the mean_squared_error function from the sklearn.metrics module to calculate the square root of the mean squared error between the true values (y_true) and the predicted values (y_pred) for the PJME_MW variable in the pjme_test dataframe and its corresponding forecast in the pjme_test_fcst dataframe. This metric measures the average difference between the actual and predicted values, with larger values indicating a greater degree of error.<br/>
+                                    <br/>
+                                    The second line uses the mean_absolute_error function from the same module to calculate the mean absolute error between the true and predicted values. This metric measures the average absolute difference between the actual and predicted values, which provides a more interpretable measure of the forecasting error than the squared error.<br/>
+                                    <br/>
+                                    The third line uses the mean_absolute_percentage_error function from the keras.metrics module to calculate the mean absolute percentage error between the true and predicted values. This metric measures the average percentage difference between the actual and predicted values, which provides a measure of the relative error in the forecasting performance.<br/>
+                                    <br/>
+                                    Overall, these three metrics provide different perspectives on the performance of the time series forecasting model and can be used to compare the performance of different models or to evaluate the impact of different parameters or features on the forecasting accuracy.</p>
+
+
+                                <hr />
+
+								<h4>Conclusion</h4>
+								<p>From the data that was available to us we were able to recognize a pattern and train a machine learning model. However the model isn't the most accurate and can be improved in multiple ways. A larger data set for example will help improve precision and/or tweaking settings in the Prophet model to take into account variables like holidays could also help improve accuracy.</p>
+							</div>
+						</section>
+					</article>
+
+					<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon solid fa-user"><span class="label">Malt</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Roman CHANDET</li>
+						</ul>
+					</footer>
+
+			</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
